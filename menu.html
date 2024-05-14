@@ -34,13 +34,13 @@
         .then(registration => {
           // 初回登録でなければ更新が見つかったかチェックする
           if (!firstRegistration) {
-            registration.addEventListener('updatefound', () => {
+            registration.addEventListener('updatefound', (event) => {
               const installingWorker = registration.installing;
               if (installingWorker != null) {
                 installingWorker.onstatechange = e => {
                   if (e.target.state == 'installed') {
-                    // registration.unregister();  // 効果が疑わしいので保留
                     alert('更新がインストールされました。PWAメニューを再起動してください。');
+                    event.waitUntil(self.skipWaiting());
                   }
                 };
               }
