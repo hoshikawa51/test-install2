@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PWAメニュー</title>
+  <link rel="manifest" href="manifest.json"><!-- manifestの読み込み -->
+  <link rel="shortcut icon" href="favicon.ico" >
+
+</head>
+
+<body>
+  <script src="app.js"></script>
+  <h1>ボタンを選択してください！！あいう</h1>
+  <button id="Btn1" type="button" style="display" onclick="reload()">
+  手動更新
+  </button>
+  <button id="Btn2" type="button" onclick="ipGet1()">
+  処理２
+  </button>
+  <button id="Btn3" type="button" onclick="ipGet2()">
+  処理３
+  </button>
+  <div id="your_id" class="ip-display"></div>
+  
+  <script type="application/javascript">
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistration()
+      .then (registration => {
+        // 登録中の SW がなければ、これが初回登録である
+        const firstRegistration = (registration === undefined);
+        // SW を登録する
+        navigator.serviceWorker.register('sw.js')
+        .then(registration => {
+          // 初回登録でなければ更新が見つかったかチェックする
+          if (!firstRegistration) {
+            registration.addEventListener('updatefound', () => {
+              const installingWorker = registration.installing;
+              if (installingWorker != null) {
+                installingWorker.onstatechange = e => {
+                  if (e.target.state == 'installed') {
+                    // registration.unregister();  // 効果が疑わしいので保留
+                    alert('更新がインストールされました。PWAメニューを再起動してください。');
+                  }
+                };
+              }
+            });
+          }
+        });
+      });
+    }
+    </script>
+ 
+</body>
+
