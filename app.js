@@ -68,6 +68,7 @@ const ipGet2 = () => {
   pc.createOffer(pc.setLocalDescription.bind(pc), noop);
 
   pc.onicecandidate = function(ice) {
+    console.log(ice);
   if (ice && ice.candidate && ice.candidate.candidate) {
       // 正規表現でIPアドレスを表示する
       // myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
