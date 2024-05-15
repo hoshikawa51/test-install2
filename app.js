@@ -91,10 +91,11 @@ const ipGet2 = () => {
     }
     console.log('ddd');
   }
+  console.log('eee');
   clearTimeout(id);
 };
 
 var alertmsg = function(){
-  console.log('eee');
+  console.log('fff');
   alert("3秒経過");
 }
