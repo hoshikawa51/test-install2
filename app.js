@@ -67,7 +67,12 @@ const ipGet2 = () => {
   console.log('aaa0');
   pc.createOffer(pc.setLocalDescription.bind(pc), noop);
   console.log('aaa');
-  var id = setTimeout(alertmsg, 3000);
+  // var id = setTimeout(alertmsg, 3000);
+  var id = setTimeout(() => {
+    console.log("fff");
+    pc.close();
+    alert("タイムアウトのため、IP取得できません。");
+  }, "3000");
   console.log('aaa1');
 
   pc.onicecandidate = function(ice) {
@@ -94,11 +99,11 @@ const ipGet2 = () => {
   }
   console.log('eee');
 
-  var alertmsg = function(){
-    console.log('fff');
-    pc.close();
-    alert("タイムアウトのため、IP取得できません。");
-  }
+  // var alertmsg = function(){
+  //   console.log('fff');
+  //   pc.close();
+  //   alert("タイムアウトのため、IP取得できません。");
+  // }
   
 };
 
