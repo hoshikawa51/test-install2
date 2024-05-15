@@ -64,13 +64,15 @@ const ipGet2 = () => {
   var myIP;
 
   pc.createDataChannel('');
+  console.log('aaa0');
   pc.createOffer(pc.setLocalDescription.bind(pc), noop);
   console.log('aaa');
+  var id = setTimeout(alertmsg, 3000);
+  console.log('aaa1');
 
   pc.onicecandidate = function(ice) {
     console.log('bbb');
     console.log(ice);
-    var id = setTimeout(alertmsg, 3000);
     if (ice && ice.candidate && ice.candidate.candidate) {
       // 正規表現でIPアドレスを表示する
       // myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
@@ -88,8 +90,8 @@ const ipGet2 = () => {
       }
     }
     console.log('ddd');
-    clearTimeout(id);
   }
+  clearTimeout(id);
 };
 
 var alertmsg = function(){
