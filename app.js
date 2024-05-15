@@ -64,7 +64,7 @@ const ipGet2 = () => {
   var myIP;
 
   pc.createDataChannel('');
-
+  setTimeout(alertmsg, 3000);
   pc.createOffer(pc.setLocalDescription.bind(pc), noop);
 
   pc.onicecandidate = function(ice) {
@@ -84,5 +84,10 @@ const ipGet2 = () => {
         console.log('IP address not found');		
       }
     }
+    clearTimeout(id);
   }
 };
+
+var alertmsg = function(){
+  alert("3秒経過");
+}
