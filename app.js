@@ -71,7 +71,7 @@ const ipGet2 = () => {
   var id = setTimeout(() => {
     console.log("fff");
     pc.close();
-    alert("タイムアウトのため、IP取得できません。");
+    alert("タイムアウトのため、IP取得できません！！");
   }, "3000");
   console.log('aaa1');
 
