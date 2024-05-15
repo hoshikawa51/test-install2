@@ -66,13 +66,16 @@ const ipGet2 = () => {
   pc.createDataChannel('');
   setTimeout(alertmsg, 3000);
   pc.createOffer(pc.setLocalDescription.bind(pc), noop);
+  console.log("aaa");
 
   pc.onicecandidate = function(ice) {
+    console.log("bbb");
     console.log(ice);
   if (ice && ice.candidate && ice.candidate.candidate) {
       // 正規表現でIPアドレスを表示する
       // myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
       // var match = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate);
+      console.log("ccc");
       var match = ice.candidate.candidate;
       if (match && match[1]) {
         myIP = match;
@@ -84,10 +87,12 @@ const ipGet2 = () => {
         console.log('IP address not found');		
       }
     }
+    console.log("ddd");
     clearTimeout(id);
   }
 };
 
 var alertmsg = function(){
+  console.log("eee");
   alert("3秒経過");
 }
