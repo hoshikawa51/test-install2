@@ -96,7 +96,7 @@ const ipGet2 = () => {
 
   var alertmsg = function(){
     console.log('fff');
-    pc = null;
+    pc.close();
     alert("タイムアウトのため、IP取得できません。");
   }
   
