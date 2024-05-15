@@ -93,9 +93,12 @@ const ipGet2 = () => {
     clearTimeout(id);
   }
   console.log('eee');
+
+  var alertmsg = function(){
+    console.log('fff');
+    pc = null;
+    alert("タイムアウトのため、IP取得できません。");
+  }
+  
 };
 
-var alertmsg = function(){
-  console.log('fff');
-  alert("タイムアウトのため、IP取得できません。");
-}
