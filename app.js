@@ -90,9 +90,9 @@ const ipGet2 = () => {
       }
     }
     console.log('ddd');
+    clearTimeout(id);
   }
   console.log('eee');
-  clearTimeout(id);
 };
 
 var alertmsg = function(){
